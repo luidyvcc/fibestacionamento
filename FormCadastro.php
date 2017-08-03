@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set("Brazil/East");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,7 @@
 			$placa = $_POST['placa'];
 			$entrada = date('d-m-Y H:i:s');
 			echo "Placa: " . $placa . "<br>" . "Entrada: " . $entrada;
-
+			echo "<br>" . $_SERVER['REQUEST_METHOD'];
 		}
 		?>
 	</form>
