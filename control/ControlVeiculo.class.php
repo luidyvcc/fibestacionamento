@@ -1,13 +1,25 @@
 <?php
 require '../model/Veiculo.class.php';
 
-$p = $_POST;
+class ControlVeiculo {
 
-$veiculo = new Veiculo();
+	private $veiculo;
 
-$veiculo->setPlaca($p['placa']);
-$veiculo->setDescricao($p['descricao']);
-$veiculo->setTipo($p['tipo']);
-$veiculo->setEntrada(date('Y-m-d-H-i-s'));
-$veiculo->insert();
+
+	public function getFormData($array){
+
+		$this->veiculo = new Veiculo();
+		$this->veiculo->setPlaca($array['placa']);
+		$this->veiculo->setDescricao($array['descricao']);
+		$this->veiculo->setTipo($array['tipo']);
+		$this->veiculo->setEntrada(date('Y-m-d-H-i-s'));
+	}
+
+	public function setFormData(){
+		$this->veiculo->insert();
+	}
+}
+
+
+
 ?>

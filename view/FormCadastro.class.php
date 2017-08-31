@@ -1,7 +1,10 @@
 <?php
 date_default_timezone_set("Brazil/East");
+require_once "../control/ControlVeiculo.class.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	require_once "../control/ControlVeiculo.class.php";
+	$controlVeiculo = new ControlVeiculo();
+	$controlVeiculo->getFormData($_POST);
+	$controlVeiculo->setFormData();
 }
 ?>
 <!DOCTYPE html>
