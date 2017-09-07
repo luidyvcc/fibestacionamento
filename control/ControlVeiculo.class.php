@@ -18,6 +18,10 @@ class ControlVeiculo {
 	public function setFormData(){
 		$this->veiculo->insert();
 	}
+
+	public function listAll(){
+		$this->veiculo->findAll();
+	}
 }
 
 
