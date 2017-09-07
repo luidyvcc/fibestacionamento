@@ -73,5 +73,14 @@ class Veiculo extends Crud
 		$stmt->bindParam(':id', $id);
 		return $stmt->execute();
 	}
+
+	public function findLimit($inicio, $fim){
+		$sql = "SELECT * FROM $this->table limit :inicio, :fim";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':inicio', $inicio);
+		$stmt->bindParam(':fim', $fim);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 }
 ?>

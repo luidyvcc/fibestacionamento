@@ -20,7 +20,8 @@ class ControlVeiculo {
 	}
 
 	public function listAll(){
-		$this->veiculo->findAll();
+		$this->veiculo = new Veiculo();
+		return $this->veiculo->findAll();
 	}
 }
 
