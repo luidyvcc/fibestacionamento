@@ -10,7 +10,7 @@ $numPaginas = ceil($linhas/$registros);
 $inicio = ($registros*$pagina)-$registros;
 
 $veiculos = $controlVeiculo->listLimit($inicio, $registros);
-$linhas = count($veiculos);
+
 
 ?>
 <!DOCTYPE html>
