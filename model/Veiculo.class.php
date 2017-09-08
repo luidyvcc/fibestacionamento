@@ -75,10 +75,10 @@ class Veiculo extends Crud
 	}
 
 	public function findLimit($inicio, $fim){
-		$sql = "SELECT * FROM $this->table limit :inicio, :fim";
+		$sql = 'SELECT * FROM ' .$this->table. ' LIMIT :inicio, :fim';
 		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':inicio', $inicio);
-		$stmt->bindParam(':fim', $fim);
+		$stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+		$stmt->bindParam(':fim', $fim, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}

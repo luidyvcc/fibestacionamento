@@ -23,6 +23,11 @@ class ControlVeiculo {
 		$this->veiculo = new Veiculo();
 		return $this->veiculo->findAll();
 	}
+
+	public function listLimit($inicio, $fim){
+		$this->veiculo = new Veiculo();
+		return $this->veiculo->findLimit($inicio, $fim);
+	}
 }
 
 

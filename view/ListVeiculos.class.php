@@ -5,10 +5,12 @@ $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 $controlVeiculo = new ControlVeiculo();
 $veiculos = $controlVeiculo->listAll();
 $linhas = count($veiculos);
-$registros = 2;
+$registros = 7;
 $numPaginas = ceil($linhas/$registros);
-$inicio = ($registros*$pagina)-$registros; 
+$inicio = ($registros*$pagina)-$registros;
 
+$veiculos = $controlVeiculo->listLimit($inicio, $registros);
+$linhas = count($veiculos);
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +31,7 @@ $inicio = ($registros*$pagina)-$registros;
 				<th colspan="2">AÇÕES</th>
 			</thead>
 			<tfoot>
-				<td colspan="8">O senhor é meu pastor e nada me faltará!</td>
+				<td colspan="8" align="center">O senhor é meu pastor e nada me faltará!</td>
 			</tfoot>
 			<?php foreach($veiculos as $carro){ ?>
 			<tr>
@@ -43,10 +45,12 @@ $inicio = ($registros*$pagina)-$registros;
 				<td><button>Editar</button></td>
 			</tr>
 			<?php } ?>
-			<?php for($i = 1; $i < $numPaginas + 1; $i++) { 
-				echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> "; 
-			}  ?>
+			
 		</table>
+		<?php for($i = 1; $i < $numPaginas + 1; $i++) { 
+			echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> "; 
+		}  ?>
 	</div>
+
 </body>
 </html>
