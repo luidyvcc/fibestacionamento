@@ -28,6 +28,16 @@ class ControlVeiculo {
 		$this->veiculo = new Veiculo();
 		return $this->veiculo->findLimit($inicio, $fim);
 	}
+
+	public function contaVeiculos(){
+		return count($this->listAll());
+	}
+
+	public function saidaVeiculo($id){
+		$this->veiculo = new Veiculo();
+		$this->veiculo->setSaida(date('Y-m-d-H-i-s'));
+		$this->veiculo->update($id);
+	}
 }
 
 

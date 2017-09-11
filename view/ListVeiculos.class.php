@@ -2,16 +2,17 @@
 date_default_timezone_set("Brazil/East");
 require_once "../control/ControlVeiculo.class.php";
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+
 $controlVeiculo = new ControlVeiculo();
-$veiculos = $controlVeiculo->listAll();
-$linhas = count($veiculos);
+if(isset($_GET['saida'])){
+	$id = $_GET['saida'];
+	$controlVeiculo->saidaVeiculo($id);
+}
+$linhas = $controlVeiculo->contaVeiculos();
 $registros = 7;
 $numPaginas = ceil($linhas/$registros);
 $inicio = ($registros*$pagina)-$registros;
-
 $veiculos = $controlVeiculo->listLimit($inicio, $registros);
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +42,7 @@ $veiculos = $controlVeiculo->listLimit($inicio, $registros);
 				<td><?php echo $carro->entrada; ?></td>
 				<td><?php echo $carro->saida; ?></td>
 				<td><?php echo $carro->valor; ?></td>
-				<td><button>Sair</button></td>
+				<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&saida=$carro->id'>Sair</a> "; ?></td>
 				<td><button>Editar</button></td>
 			</tr>
 			<?php } ?>

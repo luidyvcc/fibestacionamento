@@ -67,9 +67,9 @@ class Veiculo extends Crud
 	}
 
 	public function update($id){
-		$sql = 'UPDATE ' . $this->table . ' SET placa = :placa WHERE id = :id';
+		$sql = 'UPDATE ' . $this->table . ' SET saida = :saida WHERE id = :id';
 		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':placa', $this->placa);
+		$stmt->bindParam(':saida', $this->saida);
 		$stmt->bindParam(':id', $id);
 		return $stmt->execute();
 	}
