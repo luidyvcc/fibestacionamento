@@ -55,6 +55,10 @@ class Veiculo extends Crud
 		return $this->valor;
 	}
 
+	public function setValor($valor){
+		$this->valor = $valor;
+	}
+
 	
 	public function insert(){
 		$sql = 'INSERT INTO '.$this->table. ' (placa, descricao, tipo, entrada) VALUES (:placa, :descricao, :tipo, :entrada)';
@@ -67,20 +71,30 @@ class Veiculo extends Crud
 	}
 
 	public function update($id){
-		$sql = 'UPDATE ' . $this->table . ' SET saida = :saida WHERE id = :id';
+		$sql = 'UPDATE ' . $this->table . ' SET saida = :saida, valor = :valor WHERE id = :id';
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':saida', $this->saida);
+		$stmt->bindParam(':valor', $this->valor);
 		$stmt->bindParam(':id', $id);
 		return $stmt->execute();
 	}
 
 	public function findLimit($inicio, $fim){
-		$sql = 'SELECT * FROM ' .$this->table. ' LIMIT :inicio, :fim';
+		$sql = 'SELECT * FROM ' .$this->table. ' ORDER BY entrada desc LIMIT :inicio, :fim';
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
 		$stmt->bindParam(':fim', $fim, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
+	}
+
+	public function retornaSaida($id){
+		$sql = 'UPDATE ' . $this->table . ' SET saida = :saida, valor = :valor WHERE id = :id';
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':saida', $this->saida);
+		$stmt->bindParam(':valor', $this->valor);
+		$stmt->bindParam(':id', $id);
+		return $stmt->execute();
 	}
 }
 ?>

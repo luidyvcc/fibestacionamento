@@ -2,17 +2,18 @@
 date_default_timezone_set("Brazil/East");
 require_once "../control/ControlVeiculo.class.php";
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
-
+$dados = [];
 $controlVeiculo = new ControlVeiculo();
 if(isset($_GET['saida'])){
 	$id = $_GET['saida'];
-	$controlVeiculo->saidaVeiculo($id);
+	$dados = $controlVeiculo->saidaVeiculo($id);
 }
-$linhas = $controlVeiculo->contaVeiculos();
-$registros = 7;
-$numPaginas = ceil($linhas/$registros);
-$inicio = ($registros*$pagina)-$registros;
-$veiculos = $controlVeiculo->listLimit($inicio, $registros);
+if(isset($_GET['ret'])){
+	$id = $_GET['ret'];
+	$dados = $controlVeiculo->erroSaida($id);
+}
+$numPaginas = $controlVeiculo->contaVeiculos();
+$veiculos = $controlVeiculo->listLimit($pagina);
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,18 +40,43 @@ $veiculos = $controlVeiculo->listLimit($inicio, $registros);
 				<td><?php echo $carro->id; ?></td>
 				<td><?php echo $carro->placa; ?></td>
 				<td><?php echo $carro->descricao; ?></td>
-				<td><?php echo $carro->entrada; ?></td>
-				<td><?php echo $carro->saida; ?></td>
+				<td><?php echo date('d/m/Y H:i', strtotime($carro->entrada)); ?></td>
+				<td><?php echo ($carro->saida) ? date('d/m/Y H:i', strtotime($carro->saida)) : ""; ?></td>
 				<td><?php echo $carro->valor; ?></td>
-				<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&saida=$carro->id'>Sair</a> "; ?></td>
-				<td><button>Editar</button></td>
+				<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&saida=$carro->id'><button>Sair</button></a> ";?></td>
+				<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&ret=$carro->id'><button>Retornar</button></a> ";?></td>
 			</tr>
 			<?php } ?>
 			
 		</table>
-		<?php for($i = 1; $i < $numPaginas + 1; $i++) { 
-			echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> "; 
-		}  ?>
+		<?php for($i = 1; $i < $numPaginas + 1; $i++) {
+			echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> ";
+		}
+		?>
+	</div>
+	<div align="center">
+		<?php if (isset($_GET['saida'])) {
+			if (array_key_exists('erro', $dados)) {
+				echo "<h1>".$dados['erro']."</h1><br>";
+				echo "Permanencia: ". $dados['mes'] . "m " . $dados['dia'] . "d ". $dados['hora'] . "h " . $dados['minuto'] . "m<br>";
+				echo "Placa: " . $dados['placa'] . "<br>";
+				echo "Valor: R$" . $dados['valor'];
+			}else{
+				echo "Permanencia: ". $dados['mes'] . "m " . $dados['dia'] . "d ". $dados['hora'] . "h " . $dados['minuto'] . "m<br>";
+				echo "Placa: " . $dados['placa'] . "<br>";
+				echo "Valor: R$" . $dados['valor'];
+			}
+
+			
+			
+		}
+		if (isset($_GET['ret'])) {
+			if (array_key_exists('erro', $dados)) {
+				echo "<h1>".$dados['erro']."</h1><br>";
+			}
+		}
+
+		?>
 	</div>
 
 </body>
