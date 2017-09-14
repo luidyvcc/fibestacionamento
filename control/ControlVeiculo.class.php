@@ -4,7 +4,7 @@ require '../model/Veiculo.class.php';
 class ControlVeiculo {
 
 	private $veiculo;
-	private $registros = 7;
+	private $registros = 5;
 
 
 	public function getFormData($array){
@@ -20,20 +20,20 @@ class ControlVeiculo {
 		$this->veiculo->insert();
 	}
 
-	public function listAll(){
+	public function listAll($status){
 		$this->veiculo = new Veiculo();
-		return $this->veiculo->findAll();
+		return $this->veiculo->findAllStatus($status);
 	}
 
-	public function listLimit($pagina){
+	public function listLimit($pagina, $status){
 		$inicio = ($this->registros*$pagina)-$this->registros;
 		$this->veiculo = new Veiculo();
-		return $this->veiculo->findLimit($inicio, $this->registros);
+		return $this->veiculo->findLimit($inicio, $this->registros, $status);
 	}
 
-	public function contaVeiculos(){
+	public function contaVeiculos($status){
 
-		$linhas = count($this->listAll());
+		$linhas = count($this->listAll($status));
 		$paginas = ceil($linhas/$this->registros);
 		return $paginas;
 	}
@@ -44,6 +44,7 @@ class ControlVeiculo {
 		$dados = [];
 		if ($veiculo->saida == NULL) {
 			$this->veiculo->setSaida(date('Y-m-d-H-i-s'));
+			$this->veiculo->setStatus(2);
 			$this->veiculo->update($id);
 			$veiculo = $this->veiculo->find($id);
 			$data1 = new DateTime($veiculo->entrada);
@@ -83,6 +84,7 @@ class ControlVeiculo {
 		}else{
 			$this->veiculo->setSaida(NULL);
 			$this->veiculo->setValor(NULL);
+			$this->veiculo->setStatus(1);
 			$this->veiculo->update($id);
 			$dados['erro'] = "Carro {$veiculo->placa} Retornado";
 		}
