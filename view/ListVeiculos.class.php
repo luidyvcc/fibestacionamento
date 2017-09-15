@@ -22,9 +22,11 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2, "saida desc");
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
-	<div align="center">
+	<div id="cima">
+		<div id="cimadentro"></div>
 		<table border="1">
 			<thead>
 				<th colspan="7">TÃO</th>
@@ -55,13 +57,15 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2, "saida desc");
 			<?php } ?>
 			
 		</table>
+		
+	</div>
+	<div id="meio2">
 		<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {
 			echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> ";
 		}
 		?>
 	</div>
-	<hr>	
-	<div align="center">
+	<div id="meio">
 		<?php if (isset($_GET['saida'])) {
 			if (array_key_exists('erro', $dados)) {
 				echo $dados['erro']."<br>";
@@ -86,7 +90,7 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2, "saida desc");
 		?>
 	</div>
 	<hr>	
-	<div align="center">
+	<div id="baixo">
 		<table border="1">
 			<thead>
 				<th colspan="7">NÃO TÃO</th>

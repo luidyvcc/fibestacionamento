@@ -1,0 +1,93 @@
+#tudo {
+	position:relative;
+	width: 100%;
+	height: 100%;
+	background-color: orange;
+	margin: auto;
+}
+#tudo1 {
+	position:relative;
+	width: 30%;
+	height: 200px;
+	background-color: green;
+	float: left;
+}
+#tudo2 {
+	position: relative;
+	width: 20%;
+	height: 200px;
+	background-color: red;
+	float: left;
+}
+#tudo3 {
+	position: relative;
+	width: 20%;
+	height: 200px;
+	background-color: blue;
+	float: left;
+}
+#tudo4 {
+	position: relative;
+	width: 30%;
+	height: 200px;
+	background-color: purple;
+	float:left;
+}
+
+#cima {
+	position: relative;
+	width: 100%;
+	height: 45%;
+	background-color: purple;
+	float:left;
+}
+#cimadentro {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 300px;
+	border: 3px solid #73AD21;
+
+}
+#meio {
+	position: relative;
+	width: 100%;
+	height: 5%;
+	background-color: grey;
+	float:left;
+}
+#meio2 {
+	position: relative;
+	width: 100%;
+	height: 5%;
+	background-color: green;
+	float:left;
+	text-align: center;
+}
+#baixo {
+	position: relative;
+	width: 100%;
+	height: 45%;
+	background-color: purple;
+	float:left;
+}
+div#cima{
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: justify;
+}
+
+div#baixo{
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+p{
+	align-items: flex-end;
+}
+
