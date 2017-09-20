@@ -26,15 +26,20 @@ class ControlVeiculo {
 		return $this->veiculo->findAllStatus($status);
 	}
 
-	public function listLimit($pagina, $status){
+	public function listLimit($pagina, $status, $tabela){
 		$inicio = ($this->registros*$pagina)-$this->registros;
 		$this->veiculo = new Veiculo();
-		return $this->veiculo->findLimit($inicio, $this->registros, $status);
+		return $this->veiculo->findLimit($inicio, $this->registros, $status, $tabela);
 	}
 
 	public function contaVeiculos($status){
 
 		$linhas = count($this->listAll($status));
+		return $linhas;
+	}
+
+	public function numPaginas($status){
+		$linhas = $this->contaVeiculos($status);
 		$paginas = ceil($linhas/$this->registros);
 		return $paginas;
 	}

@@ -91,10 +91,10 @@ class Veiculo extends Crud
 		return $stmt->execute();
 	}
 
-	public function findLimit($inicio, $fim, $status){
-		$sql = 'SELECT * FROM ' .$this->table. ' WHERE status = :status ORDER BY entrada desc LIMIT :inicio, :fim';
+	public function findLimit($inicio, $fim, $status, $tabela){
+		$sql = 'SELECT * FROM ' .$this->table. ' WHERE status = :status ORDER BY %s LIMIT :inicio, :fim';
 		//$sql = 'SELECT * FROM ' .$this->table. ' ORDER BY entrada desc LIMIT :inicio, :fim';
-		$stmt = DB::prepare($sql);
+		$stmt = DB::prepare(sprintf($sql, ['entrada asc', 'saida desc'][$tabela - 1]));
 		$stmt->bindParam(':inicio', $inicio, PDO::PARAM_INT);
 		$stmt->bindParam(':fim', $fim, PDO::PARAM_INT);
 		$stmt->bindParam(':status', $status, PDO::PARAM_INT);
