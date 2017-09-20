@@ -14,6 +14,7 @@ class ControlVeiculo {
 		$this->veiculo->setDescricao($array['descricao']);
 		$this->veiculo->setTipo($array['tipo']);
 		$this->veiculo->setEntrada(date('Y-m-d-H-i-s'));
+		$this->veiculo->setStatus(1);
 	}
 
 	public function setFormData(){
@@ -34,6 +35,11 @@ class ControlVeiculo {
 	public function contaVeiculos($status){
 
 		$linhas = count($this->listAll($status));
+		return $linhas;
+	}
+
+	public function numPaginas($status){
+		$linhas = $this->contaVeiculos($status);
 		$paginas = ceil($linhas/$this->registros);
 		return $paginas;
 	}
