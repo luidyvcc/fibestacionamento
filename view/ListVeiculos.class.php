@@ -60,7 +60,7 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 		</table>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
-				<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {?>
+				<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {?>
 				<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 				<?php } ?>
 			</ul>
