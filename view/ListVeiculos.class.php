@@ -27,8 +27,8 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-	<div align="center">
-		<table class="table table-sm table-responsive table-stripped">
+	<div class="container">
+		<table class="table table-sm table-responsive table-striped">
 			<thead>
 				<th colspan="7">TÃO - <?php echo $numVeiculos1; ?> - VEÍCULOS</th>
 			</thead>
@@ -58,10 +58,14 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 			<?php } ?>
 			
 		</table>
-		<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {
-			echo "<a href='ListVeiculos.class.php?pagina=$i'>".$i."</a> ";
-		}
-		?>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {?>
+				<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+				<?php } ?>
+			</ul>
+		</nav>
+		
 	</div>
 	<hr>	
 	<div align="center">
@@ -120,10 +124,17 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 			<?php } ?>
 			
 		</table>
-		<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {
-			echo "<a href='ListVeiculos.class.php?pagina2=$i'>".$i."</a> ";
-		}
-		?>
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {?>
+				<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina2=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+				<?php } ?>
+			</ul>
+		</nav>
+		
+		echo "<a href='ListVeiculos.class.php?pagina2=$i'>".$i."</a> ";
+		
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
