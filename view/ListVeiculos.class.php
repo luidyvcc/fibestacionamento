@@ -28,44 +28,49 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 </head>
 <body>
 	<div class="container">
-		<table class="table table-sm table-responsive table-striped">
-			<thead>
-				<th colspan="7">TÃO - <?php echo $numVeiculos1; ?> - VEÍCULOS</th>
-			</thead>
-			<thead>
-				<th>ID</th>
-				<th>PLACA</th>
-				<th>DESCRIÇÃO</th>
-				<th>ENTRADA</th>
-				<th>SAÍDA</th>
-				<th>VALOR</th>
-				<th colspan="2">AÇÕES</th>
-			</thead>
-			<tfoot>
-				<td colspan="8" align="center">O senhor é meu pastor e nada me faltará!</td>
-			</tfoot>
-			<?php foreach($veiculos1 as $carro){ ?>
-			<tr>
-				<td><?php echo $carro->id; ?></td>
-				<td><?php echo $carro->placa; ?></td>
-				<td><?php echo $carro->descricao; ?></td>
-				<td><?php echo date('d/m/Y H:i', strtotime($carro->entrada)); ?></td>
-				<td><?php echo ($carro->saida) ? date('d/m/Y H:i', strtotime($carro->saida)) : ""; ?></td>
-				<td><?php echo $carro->valor; ?></td>
-				<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&pagina2=$pagina2&saida=$carro->id'><button>SAINU</button></a> ";?></td>
-				
-			</tr>
-			<?php } ?>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">TÃO - <span class="badge"><?php echo $numVeiculos1; ?></span> - VEÍCULOS</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-condensed table-responsive table-striped">
+
+						<thead>
+							<th>ID</th>
+							<th>PLACA</th>
+							<th>DESCRIÇÃO</th>
+							<th>ENTRADA</th>
+							<th>SAÍDA</th>
+							<th>VALOR</th>
+							<th>AÇÕES</th>
+						</thead>
+						
+						<?php foreach($veiculos1 as $carro){ ?>
+						<tr>
+							<td><?php echo $carro->id; ?></td>
+							<td><?php echo $carro->placa; ?></td>
+							<td><?php echo $carro->descricao; ?></td>
+							<td><?php echo date('d/m/Y H:i', strtotime($carro->entrada)); ?></td>
+							<td><?php echo ($carro->saida) ? date('d/m/Y H:i', strtotime($carro->saida)) : ""; ?></td>
+							<td><?php echo $carro->valor; ?></td>
+							<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&pagina2=$pagina2&saida=$carro->id'><button>SAINU</button></a> ";?></td>
+
+						</tr>
+						<?php } ?>
+
+					</table>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination pagination-sm">
+							<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {?>
+							<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+							<?php } ?>
+						</ul>
+					</nav>
+				</div>
+			</div>
 			
-		</table>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {?>
-				<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-				<?php } ?>
-			</ul>
-		</nav>
-		
+		</div>
 	</div>
 	<hr>	
 	<div align="center">
