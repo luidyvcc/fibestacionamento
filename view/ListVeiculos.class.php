@@ -14,9 +14,9 @@ if(isset($_GET['ret'])){
 	$dados = $controlVeiculo->erroSaida($id);
 }
 $numPaginas1 = $controlVeiculo->contaVeiculos(1);
-$veiculos1 = $controlVeiculo->listLimit($pagina,1);
+$veiculos1 = $controlVeiculo->listLimit($pagina,1, 1);
 $numPaginas2 = $controlVeiculo->contaVeiculos(2);
-$veiculos2 = $controlVeiculo->listLimit($pagina2,2);
+$veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 ?>
 <!DOCTYPE html>
 <html>
