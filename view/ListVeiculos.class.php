@@ -37,7 +37,6 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 					</div>
 					<div class="panel-body">
 						<table class="table table-condensed table-responsive table-striped">
-
 							<thead>
 								<th>ID</th>
 								<th>PLACA</th>
@@ -47,7 +46,6 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 								<th>VALOR</th>
 								<th>AÇÕES</th>
 							</thead>
-
 							<?php foreach($veiculos1 as $carro){ ?>
 							<tr>
 								<td><?php echo $carro->id; ?></td>
@@ -57,28 +55,19 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 								<td><?php echo ($carro->saida) ? date('d/m/Y H:i', strtotime($carro->saida)) : ""; ?></td>
 								<td><?php echo $carro->valor; ?></td>
 								<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&pagina2=$pagina2&saida=$carro->id'><button>SAINU</button></a> ";?></td>
-
 							</tr>
 							<?php } ?>
-
 						</table>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination pagination-sm">
-								<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {?>
-								<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-								<?php } ?>
-							</ul>
-						</nav>
 					</div>
 				</div>
-
+				<nav aria-label="Page navigation example">
+					<ul class="pagination pagination-sm">
+						<?php for($i = 1; $i < $numPaginas1 + 1; $i++) {?>
+						<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+						<?php } ?>
+					</ul>
+				</nav>
 			</div>
-
-
-
-
-
-
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -86,7 +75,6 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 					</div>
 					<div class="panel-body">
 						<table class="table table-condensed table-responsive table-striped">
-
 							<thead>
 								<th>ID</th>
 								<th>PLACA</th>
@@ -96,8 +84,6 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 								<th>VALOR</th>
 								<th>AÇÕES</th>
 							</thead>
-
-
 							<?php foreach($veiculos2 as $carro2){ ?>
 							<tr>
 								<td><?php echo $carro2->id; ?></td>
@@ -109,19 +95,16 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 								<td><?php echo "<a href='ListVeiculos.class.php?pagina=$pagina&pagina2=$pagina2&ret=$carro2->id'><button>VOLTA</button></a> ";?></td>
 							</tr>
 							<?php } ?>
-
 						</table>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination pagination-sm">
-								<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {?>
-								<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina2=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-								<?php } ?>
-							</ul>
-						</nav>
 					</div>
 				</div>
-
-
+				<nav aria-label="Page navigation example">
+					<ul class="pagination pagination-sm">
+						<?php for($i = 1; $i < $numPaginas2 + 1; $i++) {?>
+						<li class="page-item"><a class="page-link" href="ListVeiculos.class.php?pagina2=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+						<?php } ?>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
@@ -136,16 +119,12 @@ $veiculos2 = $controlVeiculo->listLimit($pagina2,2,2);
 			echo "Placa: " . $dados['placa'] . "<br>";
 			echo "Valor: R$" . $dados['valor'];
 		}
-
-
-
 	}
 	if (isset($_GET['ret'])) {
 		if (array_key_exists('erro', $dados)) {
 			echo $dados['erro']."<br>";
 		}
 	}
-
 	?>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
