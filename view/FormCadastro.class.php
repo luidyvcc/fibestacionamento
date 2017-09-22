@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<div class="container-fluid">
 		<form action="" method="post">
 			<div class="row">
-				<div class="col-xs-3">
+				<div class="col-xs-3 bg-info">
 					<div class="form-group">
 						<label for="placa">Placa</label>
 						<input type="text" class="form-control" id="placa" placeholder="Placa" name="placa">
@@ -28,20 +28,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-3">
+				<div class="col-xs-3 bg-info">
 					<div class="form-group">
-						<label for="descricao">Descricao</label>
+						<label for="descricao">Descrição</label>
 						<input type="text" class="form-control" id="descricao" placeholder="Descrição" name="descricao">
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-1">
+				<div class="col-xs-3 bg-info">
 					<div class="form-group">
 						<label for="tipo">Tipo</label>
 						<input type="text" class="form-control" id="tipo" placeholder="Tipo" name="tipo">
 					</div>
-					<button type="submit" class="btn btn-default" name="btnGravar">Gravar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3 bg-info">
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-sm form-control" name="btnGravar">Gravar</button>
+					</div>
 				</div>
 			</div>
 		</form>
