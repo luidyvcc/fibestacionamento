@@ -4,7 +4,7 @@ require '../model/Veiculo.class.php';
 class ControlVeiculo {
 
 	private $veiculo;
-	private $registros = 5;
+	private $registros = 10;
 
 
 	public function getFormData($array){

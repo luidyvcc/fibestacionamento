@@ -8,5 +8,6 @@ entrada			datetime		not null,
 saida			datetime		null,
 valor			decimal(10,2)	null,
 status			int 			not null,
+id_cliente		int 			null,
 primary key(id)
 );
